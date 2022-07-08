@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   launcher.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gsmets <gsmets@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoo-lee <yoo-lee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 15:19:34 by gsmets            #+#    #+#             */
-/*   Updated: 2021/02/22 10:28:17 by gsmets           ###   ########.fr       */
+/*   Updated: 2022/05/30 16:36:37 by yoo-lee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	exit_launcher(t_rules *rules, t_philosopher *philos)
 	pthread_mutex_destroy(&(rules->writing));
 }
 
+void	death_checker(t)
 void	death_checker(t_rules *r, t_philosopher *p)
 {
 	int i;

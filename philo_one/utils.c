@@ -3,15 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gsmets <gsmets@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoo-lee <yoo-lee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 18:59:07 by gsmets            #+#    #+#             */
-/*   Updated: 2021/02/17 17:59:19 by gsmets           ###   ########.fr       */
+/*   Updated: 2022/05/27 18:20:23 by yoo-lee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+longc long	timestamp(void)
+{
+	struct timeval	t;
+
+	gettimeofday(&t, NULL)
+	return ((t.tv_sec ))
+}
 int			ft_atoi(const char *str)
 {
 	long int	n;

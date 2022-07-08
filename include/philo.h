@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gsmets <gsmets@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoo-lee <yoo-lee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 18:30:58 by gsmets            #+#    #+#             */
-/*   Updated: 2021/02/19 19:22:27 by gsmets           ###   ########.fr       */
+/*   Updated: 2022/07/08 19:26:58 by yoo-lee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,16 @@
 # define PHILO_H
 
 # include <sys/time.h>
-# include <sys/wait.h>
-# include <signal.h>
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
 # include <pthread.h>
-# include <semaphore.h>
-# include <fcntl.h>
-# include <sys/stat.h>
 
-struct s_rules;
+struct s_rules
+{
+	
+}
 
 typedef	struct			s_philosopher
 {
@@ -35,8 +33,7 @@ typedef	struct			s_philosopher
 	int					right_fork_id;
 	long long			t_last_meal;
 	struct s_rules		*rules;
-	pthread_t			death_check;
-	pid_t				proc_id;
+	pthread_t			thread_id;
 }						t_philosopher;
 
 typedef struct			s_rules
@@ -47,10 +44,11 @@ typedef struct			s_rules
 	int					time_sleep;
 	int					nb_eat;
 	int					dieded;
+	int					all_ate;
 	long long			first_timestamp;
-	sem_t				*meal_check;
-	sem_t				*forks;
-	sem_t				*writing;
+	pthread_mutex_t		meal_check;
+	pthread_mutex_t		forks[250];
+	pthread_mutex_t		writing;
 	t_philosopher		philosophers[250];
 }						t_rules;
 
@@ -82,6 +80,6 @@ void					smart_sleep(long long time, t_rules *rules);
 */
 
 int						launcher(t_rules *rules);
-void					exit_launcher(t_rules *rules);
+void					exit_launcher(t_rules *rules, t_philosopher *philos);
 
 #endif
